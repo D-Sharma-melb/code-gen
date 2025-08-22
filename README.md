@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Step-to-HTML Generator
 
-## Getting Started
+## 📘 Overview
+This project is built for **professors, teachers, and non-technical users** who need to create clear, step-by-step instructions for students, often within a **Learning Management System (LMS)**.  
 
-First, run the development server:
+Instead of writing code, users can simply type in steps and click **Generate Output**. The tool will create a ready-to-use **HTML page** with **CSS and JavaScript** where:  
+- Each step appears as a **button**.  
+- Clicking on a button shows the text of that step.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This makes it easy to turn instructions into an **interactive webpage** without any coding knowledge.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Features
+- Write plain-text instructions.  
+- Convert steps into an **interactive webpage** automatically.  
+- **Clickable buttons** for each step.  
+- Works in any modern web browser.  
+- Simple interface designed for non-technical users.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🖥️ How to Use
+1. Open the application.  
+2. Type each instruction in the provided text fields (e.g., *Step 1: Log in to LMS*).  
+3. Click the **Generate Output** button.  
+4. The app will generate a ready-to-use HTML file.  
+5. Open the file in a browser → You’ll see buttons for each step.  
+6. Click a button to view the corresponding instruction.  
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Example
+Input:  
+- Step 1: Log in to the LMS  
+- Step 2: Open your course page  
+- Step 3: Upload the assignment  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Output:  
+- A web page with buttons **Step 1**, **Step 2**, **Step 3**.  
+- Clicking each button reveals the step description.  
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Technology (For Developers)
+- **Frontend:** React (for the app interface).  
+- **Output:** Pure HTML, CSS, and JavaScript.  
+- **No coding required for users** — the app handles everything.  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📌 Use Cases
+- Professors sharing **step-by-step assignment upload guides**.  
+- Teachers creating **interactive tutorials** for LMS navigation.  
+---
+
