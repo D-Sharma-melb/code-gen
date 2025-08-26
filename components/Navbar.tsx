@@ -14,10 +14,10 @@ function Navbar() {
         <div className="container-fluid">
             <div className="row align-items-center p-2">
             <div className="col-8 d-flex">
-                <div className="me-3">Tabs 1</div>
-                <div className="me-3">Tabs 2</div>
-                <div className="me-3">Tabs 3</div>
-                <div className="me-3">Tabs 4</div>
+                <button className="btn btn-secondary m-1">Tabs</button>
+                <button className="btn btn-secondary m-1">Questions</button>
+                <button className="btn btn-secondary m-1">Escape room</button>
+                <button className="btn btn-secondary m-1">Coding Race</button>
             </div>
             <div className="col-4 d-flex justify-content-end align-items-center">
                 <div className="me-3">{activeMenu}</div>

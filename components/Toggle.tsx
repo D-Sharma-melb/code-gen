@@ -1,19 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import "./Toggle.css"; 
+import "./Toggle.css";
 
 export default function Toggle() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
-  // Apply dark or light mode to <body>
   useEffect(() => {
     if (darkMode) {
-      document.body.classList.add("bg-dark", "text-white");
-      document.body.classList.remove("bg-light", "text-dark");
+      document.body.classList.add("dark-mode");
     } else {
-      document.body.classList.add("bg-light", "text-dark");
-      document.body.classList.remove("bg-dark", "text-white");
+      document.body.classList.remove("dark-mode");
     }
   }, [darkMode]);
 

@@ -5,6 +5,7 @@ type Props = {
 }
 
 function SectionC({steps}: Props) {
+    // For Generating code 
     const [genCode, setgenCode] = useState("");
     const onOutputClick = ()=>{
         console.log("Captured Steps:", steps);
@@ -56,30 +57,52 @@ function SectionC({steps}: Props) {
         `;
         setgenCode(html_doc);
     }
-    return (
-        <div className="m-1">
-            <div className="d-flex align-items-center justify-content-between mb-2">
-                <h3 className="m-0">Output Code</h3>
-                <button
-                type="button"
-                className="btn btn-primary"
-                onClick={onOutputClick}
-                >
-                Output
-                </button>
-            </div>
+    // For the copy button
+    const [copied, setCopied] = useState(false);
 
-        {/* Textarea below */}
+    const handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText(genCode);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+            console.error("Failed to copy: ", err);
+        }
+    }
+    return (
+    <div className="m-1">
+      <div className="d-flex align-items-center justify-content-between mb-2">
+        <h3 className="m-0">Output Code</h3>
+        <button type="button" className="btn btn-primary" onClick={onOutputClick}>
+          Output
+        </button>
+      </div>
+
+      {/* Wrapper for textarea + copy button */}
+      <div style={{ position: "relative" }}>
         <textarea
-            className="form-control"
-            placeholder="Generated code appears here"
-            id="outputTextarea"
-            style={{ height: "70vh", resize: "none" }}
-            value={genCode || ""}
-            readOnly
+          className="form-control"
+          placeholder="Generated code appears here"
+          id="outputTextarea"
+          style={{ height: "70vh", resize: "none" }}
+          value={genCode || ""}
+          readOnly
         />
-        </div>
-    );
+        <button
+          onClick={handleCopy}
+          className="btn btn-sm btn-secondary me-3"
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            zIndex: 10,
+          }}
+        >
+          {copied ? "Copied!" : "Copy"}
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default SectionC

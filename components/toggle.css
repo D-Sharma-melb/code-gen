@@ -1,31 +1,31 @@
 .toggle-btn {
   width: 60px;
   height: 30px;
-  background-color: #ccc;
   border-radius: 30px;
   display: flex;
   align-items: center;
   padding: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  background-color: var(--btn-bg);
 }
 
 .toggle-btn.light {
-  background-color: #ddd;
+  background-color: #a09d9d;
 }
 
 .toggle-btn.dark {
-  background-color: #333;
+  background-color: var(--btn-bg);
 }
 
 .toggle-circle {
   width: 22px;
   height: 22px;
-  background: white;
+  background: var(--text-color);
   border-radius: 50%;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .toggle-btn.dark .toggle-circle {
-  transform: translateX(30px); /* Slide right */
+  transform: translateX(30px);
 }

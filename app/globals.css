@@ -1,0 +1,26 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+body.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  --btn-bg: #333333;
+  --btn-text: #ffffff;
+}
+
+/* Apply variables globally */
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+
+
+textarea, input, select {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  border-color: var(--btn-bg) !important;
+}

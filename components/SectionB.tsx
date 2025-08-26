@@ -38,7 +38,7 @@ function SectionB({ selectedStep, steps, onUpdateText }: Props) {
           value={step?.text || ""}
           onChange={(e) => onUpdateText(selectedStep, e.target.value)}
         />
-        <label htmlFor="floatingTextarea2">
+        <label htmlFor="floatingTextarea2" >
           {selectedStep ? `Enter: ${selectedStep}` : "Enter step details"}
         </label>
       </div>

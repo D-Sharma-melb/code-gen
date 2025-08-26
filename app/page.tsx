@@ -2,35 +2,65 @@
 import SectionA from "@/components/SectionA";
 import SectionB from "@/components/SectionB";
 import SectionC from "@/components/SectionC";
-import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+type Step = { id: string; text: string };
 
 export default function Home() {
-  // steps array: each step has id + text
-  const [steps, setSteps] = useState<{ id: string; text: string }[]>([]);
+  const [steps, setSteps] = useState<Step[]>([]);
   const [selectedStep, setSelectedStep] = useState<string | null>(null);
 
-  // add new step
+  // Load from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("steps");
+    if (saved) {
+      try {
+        const parsed: Step[] = JSON.parse(saved);
+        setSteps(parsed);
+        if (parsed.length > 0) {
+          setSelectedStep(parsed[parsed.length - 1].id);
+        }
+      } catch (err) {
+        console.error("Failed to parse steps from localStorage:", err);
+      }
+    }
+  }, []);
+
+  // Save to localStorage whenever steps change
+  useEffect(() => {
+    localStorage.setItem("steps", JSON.stringify(steps));
+  }, [steps]);
+
+  // Add new step
   const addStep = () => {
     const newId = `Step ${steps.length + 1}`;
     setSteps([...steps, { id: newId, text: "" }]);
     setSelectedStep(newId);
   };
 
-  // delete last step
+  // Delete last step
   const deleteStep = () => {
     const newSteps = steps.slice(0, -1);
     setSteps(newSteps);
-    setSelectedStep(newSteps.length > 0 ? newSteps[newSteps.length - 1].id : null);
+    setSelectedStep(
+      newSteps.length > 0 ? newSteps[newSteps.length - 1].id : null
+    );
   };
 
-  // update text for selected step
+  // Update text for selected step
   const updateStepText = (id: string, text: string) => {
-    setSteps(steps.map(step => step.id === id ? { ...step, text } : step));
+    setSteps(steps.map((step) => (step.id === id ? { ...step, text } : step)));
+  };
+
+  // for renaming the step heading
+  const updateStepId = (oldId: string, newId: string) => {
+    setSteps(
+      steps.map((step) => (step.id === oldId ? { ...step, id: newId } : step))
+    );
+    if (selectedStep === oldId) setSelectedStep(newId);
   };
 
   return (
-    <>
     <div className="container-fluid p-0">
       <h2 className="text-center m-1">Generate your code</h2>
 
@@ -43,6 +73,7 @@ export default function Home() {
             onAdd={addStep}
             onDelete={deleteStep}
             onSelect={setSelectedStep}
+            onRename={updateStepId} 
           />
         </div>
 
@@ -61,6 +92,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  </>
   );
 }
